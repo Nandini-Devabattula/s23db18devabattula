@@ -67,13 +67,13 @@ async function recreateDB(){
  // Delete everything
  await soaps.deleteMany();
  let instance1 = new
- soaps({"Soap_Name": "Margo", "Soap_cost": "200", "Soap_Color": "Green"});
+ soaps({"Soap_Name": "Margo", "Soap_cost": 200, "Soap_Color": "Green"});
 
  let instance2 = new
- soaps({"Soap_Name": "Dove", "Soap_cost": "100", "Soap_Color": "White"});
+ soaps({"Soap_Name": "Dove", "Soap_cost": 100, "Soap_Color": "White"});
 
  let instance3 = new
- soaps({"Soap_Name": "Lux", "Soap_cost": "500", "Soap_Color": "blue"});
+ soaps({"Soap_Name": "Lux", "Soap_cost": 500, "Soap_Color": "blue"});
 
 instance1.save().then( () => { console.log('First Object is created'); }).catch( (e) => { console.log('There was an error', e.message); });
 instance2.save().then( () => { console.log('Second Object is created'); }).catch( (e) => { console.log('There was an error', e.message); });
