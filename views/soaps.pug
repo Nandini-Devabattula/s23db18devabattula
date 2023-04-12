@@ -2,13 +2,14 @@ extends layout
 
 block content
     h1= title
-    -
-     let soaps  = [{"Soap_Name": "Margo", "Soap_cost": "200", "Soap_Color": "Green",}, 
-     {"Soap_Name": "Dove", "Soap_cost": "100", "Soap_Color": "White",},
-      {"Soap_Name": "Lux", "Soap_cost": "500", "Soap_Color": "blue",},]
+    //- -
+    //-  let soaps  = [{"Soap_Name": "Margo", "Soap_cost": "200", "Soap_Color": "Green",}, 
+    //-  {"Soap_Name": "Dove", "Soap_cost": "100", "Soap_Color": "White",},
+    //-   {"Soap_Name": "Lux", "Soap_cost": "500", "Soap_Color": "blue",},]
+    - let result =results
     div(class= "container-fluid")
         div(class = "row")  
-            each item, index in soaps 
+            each item, index in result
                 div(class= "col-sm-2", onclick=`soaps(${index})`) Soap_Name:  #{item.Soap_Name}
                 div(class= "col-sm-2", onclick=`soaps(${index})`) Soap_cost:  #{item.Soap_cost}
                 div(class= "col-sm-2", onclick=`soaps(${index})`) Soap_color:   #{item.Soap_Color}
