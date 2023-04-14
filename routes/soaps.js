@@ -3,7 +3,8 @@ const soaps_controllers= require('../controllers/soaps');
 var router = express.Router();
 
 /* GET home page. */
-/* GET costumes */
-router.get('/', soaps_controllers.soaps_view_all_Page );
+/* GET soapss */
+//GET request for one soaps.
+router.get('/soaps/:id', soaps_controllers.soaps_detail);
 module.exports = router;
 
