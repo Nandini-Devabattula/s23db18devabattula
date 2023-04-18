@@ -42,9 +42,21 @@ exports.soaps_create_post = async function(req, res) {
 
 
 // Handle soaps delete form on DELETE.
+/*
 exports.soaps_delete = function(req, res) {
  res.send('NOT IMPLEMENTED: soaps delete DELETE ' + req.params.id);
-};
+};*/
+exports.soaps_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await soaps.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+   };
 // Handle soaps update form on PUT.
 /*
 exports.soaps_update_put = function(req, res) {
