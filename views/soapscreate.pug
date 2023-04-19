@@ -1,0 +1,32 @@
+extends layout
+block content
+    h1= title
+    form(id='soapsForm', action="/resource/soaps", method="POST")
+        div.form-group
+            label.soapsAttr(for='Soap_Name') soaps name
+            input#Soap_Name(type='text', name='Soap_Name')
+        div.form-group
+            label.soapsAttr(for='Soap_cost') soaps cost
+            input#Soap_cost(type='number', name='Soap_cost')
+        div.form-group
+            label.soapsAttr(for='Soap_Color') soaps color
+            input#Soap_Color(type='text', name='Soap_Color')
+        input(type="submit")
+    script.
+        document.forms['soapsForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        // TODO do something here to show user that form is being submitted
+        fetch(event.target.action, {
+            method: 'POST',
+            body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+         return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+         alert("Save succeded")
+         // TODO handle body
+        }).catch((error) => {
+        // TODO handle error
+         alert("Save failed " + error )
+        });
+      });
+    
