@@ -61,5 +61,12 @@ router.get('/ping', function(req, res){
   res.status(200).send("pong!");
 });
 
+router.post('/login', passport.authenticate('local'), function(req, res) {
+  if (req.session.returnTo) {
+    res.redirect(req.session.returnTo);
+  }
+  res.redirect('/');
+});
+
 module.exports = router;
 
