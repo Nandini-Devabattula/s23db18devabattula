@@ -19,7 +19,7 @@ router.get('/create', soaps_controllers.soaps_create_Page);
 router.get('/update', soaps_controllers.soaps_update_Page);
 router.get('/delete', soaps_controllers.soaps_delete_Page);
 /* GET update soaps page */
-router.get('/update', soaps_controllers.soaps_update_Page);
+//router.get('/update', soaps_controllers.soaps_update_Page);
 /* GET update costume page */
 router.get('/update', secured,soaps_controllers.soaps_update_Page);
 

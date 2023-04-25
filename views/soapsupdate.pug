@@ -1,43 +1,44 @@
 extends layout
 block content
-    h1= title
-    if(toShow==null)
-        h2 no instance found
-    else
-        - let soapsid = toShow._id
-        - let Soap_Name = toShow.Soap_Name
-        - let Soap_cost = toShow.Soap_cost
-        - let Soap_Color = toShow.Soap_Color
-        div.row(class='mb-2')
-        div.mr-1 ID is
-        div #{soapsid}
-        - let actionid = "/resource/soaps/" + soapsid
-        form(id='soapsForm', action= actionid, method="PUT")
-        div.form-group
-            label.soapsAttr(for='Soaps_Name') soaps name
-            input#Soap_Name(type='text', name='Soaps_Name', value= Soaps_Name )
-        div.form-group
-            label.soapsAttr(for='Soap_cost') soap cost
-            input#Soap_cost(type='number', name='Soap_cost', value= Soap_cost )
-        div.form-group
-            label.soapsAttr(for='Soap_Color') soaps color
-            input#Soap_Color(type='text', name='Soap_Color', value= Soap_Color )
-        input(type="submit")
-        script.
-            document.forms['soapsForm'].addEventListener('submit', (event) => {
-                event.preventDefault();
+  h1= title
+  if(toShow==null)
+    h2 no instance found
+  else
+    - let soapsid = toShow._id
+    - let Soap_Name = toShow.Soap_Name
+    - let Soap_cost = toShow.Soap_cost
+    - let Soap_Color = toShow.Soap_Color
+    div.row(class='mb-2')
+      div.mr-1 ID is
+      div #{soapsid}
+    - let actionid = "/resource/soaps/" + soapsid
+    form(id='soapsForm', action= actionid, method="PUT")
+      div.form-group
+        label.soapsAttr(for='Soaps_Name') soaps name
+        input#Soap_Name(type='text', name='Soaps_Name', value= Soap_Name )
+      div.form-group
+        label.soapsAttr(for='Soap_cost') soap cost
+        input#Soap_cost(type='number', name='Soap_cost', value= Soap_cost )
+      div.form-group
+        label.soapsAttr(for='Soap_Color') soaps color
+        input#Soap_Color(type='text', name='Soap_Color', value= Soap_Color )
+      input(type="submit")
+    script.
+      document.forms['soapsForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
                                         
-                fetch(event.target.action, {
-                    method: 'PUT',
-                    body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-                }).then((resp) => {
-                    return resp.json(); // or resp.text() or whatever the server sends
-                }).then((body) => {
-                    alert("Update succeded")
-                    // TODO handle body
-                }).catch((error) => {
-                    // TODO handle error
-                    alert("Update failed " + error )
-                });
-            });
+        fetch(event.target.action, {
+          method: 'PUT',
+          body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Update succeeded")
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Update failed, Give correct details " + error )
+        });
+      });
 
+      
