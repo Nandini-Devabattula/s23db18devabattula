@@ -14,10 +14,10 @@ const secured = (req, res, next) => {
   }  
 //GET request for one soaps.
 router.get('/', soaps_controllers.soaps_view_all_Page);
-router.get('/detail', soaps_controllers.soaps_view_one_Page);
-router.get('/create', soaps_controllers.soaps_create_Page);
-router.get('/update', soaps_controllers.soaps_update_Page);
-router.get('/delete', soaps_controllers.soaps_delete_Page);
+router.get('/detail',secured, soaps_controllers.soaps_view_one_Page);
+router.get('/create', secured,soaps_controllers.soaps_create_Page);
+//router.get('/update', soaps_controllers.soaps_update_Page);
+router.get('/delete',secured, soaps_controllers.soaps_delete_Page);
 /* GET update soaps page */
 //router.get('/update', soaps_controllers.soaps_update_Page);
 /* GET update costume page */
